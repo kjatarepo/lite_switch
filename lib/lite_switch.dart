@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 
 
-class liteswitch extends StatefulWidget {
+class LiteSwitch extends StatefulWidget {
   @required
   final bool value;
   @required
@@ -23,7 +23,7 @@ class liteswitch extends StatefulWidget {
   final Function onDoubleTap;
   final Function onSwipe;
 
-  liteswitch(
+  LiteSwitch(
       {this.value = false,
       this.iWidth = 140,
       this.iHeight = 40,
@@ -44,7 +44,7 @@ class liteswitch extends StatefulWidget {
   _LiteSwitchState createState() => _LiteSwitchState();
 }
 
-class _LiteSwitchState extends State<liteswitch>
+class _LiteSwitchState extends State<LiteSwitch>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation<double> animation;

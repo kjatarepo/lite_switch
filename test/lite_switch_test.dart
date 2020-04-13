@@ -32,7 +32,7 @@ class _TextFieldExState extends State<testswitch> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(top: 0),
-              child: liteswitch(
+              child: LiteSwitch(
                 value: true,
                 textSize: 16.0,
                 iWidth: 140,
