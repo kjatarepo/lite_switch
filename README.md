@@ -1,5 +1,5 @@
 # Lite Switch
-Lite Switch is a customized switch which you can add text and icon for "On" and "Off".
+Lite Switch is a customized switch which you can add or change text and icon for "On" and "Off".
 You can also set the width and height for the switch in your app.
 
 ## Screenshot
@@ -30,7 +30,7 @@ Widget build(BuildContext context) {
             Padding(
               padding: EdgeInsets.only(top: 0),
               child: LiteSwitch(
-                value: true,
+                initValue: true,
                 textSize: 16.0,
                 iWidth: 140,
                 iHeight: 40,
@@ -41,7 +41,7 @@ Widget build(BuildContext context) {
                 iconOn: Icons.volume_up,
                 iconOff: Icons.volume_off,
                 onChanged: (bool state) {
-                  print('turned ${(state) ? 'on' : 'off'}');
+
                 },
               ),
             ),

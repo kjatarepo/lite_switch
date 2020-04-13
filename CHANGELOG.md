@@ -1,3 +1,6 @@
+## [1.0.5] Apri 14, 2020
+* Fix the value change event bug.
+
 ## [1.0.4] Apri 14, 2020
 * Change class name using UpperCamelName
 * Update Package description

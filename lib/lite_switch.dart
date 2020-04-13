@@ -3,12 +3,12 @@ library lite_switch;
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-
 class LiteSwitch extends StatefulWidget {
   @required
-  final bool value;
+  final bool initValue;
   @required
   final Function(bool) onChanged;
+
   final double iWidth;
   final double iHeight;
   final String textOff;
@@ -24,17 +24,17 @@ class LiteSwitch extends StatefulWidget {
   final Function onSwipe;
 
   LiteSwitch(
-      {this.value = false,
-      this.iWidth = 140,
+      {this.initValue = false,
+      this.iWidth = 120,
       this.iHeight = 40,
-      this.textOff = "Sound Off",
-      this.textOn = "Sound On",
+      this.textOff = "Off",
+      this.textOn = "On",
       this.textSize = 16.0,
       this.colorOn = Colors.deepOrange,
       this.colorOff = Colors.black,
       this.iconOff = Icons.volume_off,
       this.iconOn = Icons.volume_up,
-      this.animationDuration = const Duration(milliseconds: 600),
+      this.animationDuration = const Duration(milliseconds: 100),
       this.onTap,
       this.onDoubleTap,
       this.onSwipe,
@@ -77,7 +77,7 @@ class _LiteSwitchState extends State<LiteSwitch>
         value = animation.value;
       });
     });
-    turnState = widget.value;
+    turnState = widget.initValue;
     _determine();
   }
 
@@ -195,7 +195,7 @@ class _LiteSwitchState extends State<LiteSwitch>
       (turnState)
           ? animationController.forward()
           : animationController.reverse();
-
+      widget.onChanged(turnState);
     });
   }
 }

@@ -29,7 +29,7 @@ class _LiteSwitchState extends State<MyApp> {
             Padding(
               padding: EdgeInsets.only(top: 0),
               child: LiteSwitch(
-                value: true,
+                initValue: true,
                 textSize: 16.0,
                 iWidth: 140,
                 iHeight: 40,
@@ -40,7 +40,6 @@ class _LiteSwitchState extends State<MyApp> {
                 iconOn: Icons.volume_up,
                 iconOff: Icons.volume_off,
                 onChanged: (bool state) {
-                  print('turned ${(state) ? 'on' : 'off'}');
                 },
               ),
             ),
