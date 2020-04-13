@@ -1,7 +1,7 @@
 name: lite_switch
 description: A lite customized switch
-version: 1.0.0
-homepage：http://www.galacticpuffin.com
+version: 1.0.2
+homepage: http://www.galacticpuffin.com
 
 
 environment:
@@ -20,7 +20,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+assets:
+  - assets/images/on.png
+  - assets/images/off.png
   # To add assets to your package, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

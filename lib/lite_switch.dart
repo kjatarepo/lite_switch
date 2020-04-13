@@ -114,8 +114,8 @@ class _LiteSwitchState extends State<liteswitch>
                 child: Container(
                   padding: EdgeInsets.only(right: 10),
                   alignment: Alignment.centerRight,
-                  width: widget.iWidth,
-                  height: widget.iHeight,
+//                  width: widget.iWidth,
+//                  height: widget.iHeight,
                   child: Text(
                     widget.textOff,
                     style: TextStyle(
@@ -133,8 +133,8 @@ class _LiteSwitchState extends State<liteswitch>
                 child: Container(
                   padding: EdgeInsets.only(left: 5),
                   alignment: Alignment.centerLeft,
-                  width: widget.iWidth,
-                  height: widget.iHeight,
+//                  width: widget.iWidth,
+//                  height: widget.iHeight,
                   child: Text(
                     widget.textOn,
                     style: TextStyle(
@@ -149,8 +149,8 @@ class _LiteSwitchState extends State<liteswitch>
               offset: Offset(
                   (widget.iWidth / 2 - widget.iHeight / 2) * offsetvalue, 0),
               child: Container(
-                width: widget.iWidth,
-                height: widget.iHeight,
+//                width: widget.iWidth,
+//                height: widget.iHeight,
                 alignment: Alignment.center,
                 decoration:
                     BoxDecoration(shape: BoxShape.circle, color: Colors.white),
