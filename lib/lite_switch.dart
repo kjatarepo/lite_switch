@@ -1,5 +1,3 @@
-library lite_switch;
-
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
@@ -22,9 +20,12 @@ class LiteSwitch extends StatefulWidget {
   final Function onTap;
   final Function onDoubleTap;
   final Function onSwipe;
+  // Change SwitchState will notify the switch animation to ON or Off if needed.
+  final ValueNotifier<bool> switchState;
 
   LiteSwitch(
-      {this.initValue = false,
+      {this.switchState,
+      this.initValue = true,
       this.iWidth = 120,
       this.iHeight = 40,
       this.textOff = "Off",
@@ -65,6 +66,7 @@ class _LiteSwitchState extends State<LiteSwitch>
   @override
   void initState() {
     super.initState();
+
     animationController = AnimationController(
         vsync: this,
         lowerBound: 0.0,
@@ -74,6 +76,7 @@ class _LiteSwitchState extends State<LiteSwitch>
         CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
     animationController.addListener(() {
       setState(() {
+        //print("animationController.addListener");
         value = animation.value;
       });
     });
@@ -81,10 +84,19 @@ class _LiteSwitchState extends State<LiteSwitch>
     _determine();
   }
 
+  ValueNotifier valueNotifier;
   @override
   Widget build(BuildContext context) {
     Color transitionColor = Color.lerp(widget.colorOff, widget.colorOn, value);
-
+    widget.switchState.addListener(() {
+      setState(() {
+        //print('trigger');
+        bool newValue = widget.switchState.value;
+        (newValue)
+            ? animationController.forward()
+            : animationController.reverse();
+      });
+    });
     return GestureDetector(
       onDoubleTap: () {
         _action();
@@ -97,7 +109,6 @@ class _LiteSwitchState extends State<LiteSwitch>
       onPanEnd: (details) {
         _action();
         if (widget.onSwipe != null) widget.onSwipe();
-        //widget.onSwipe();
       },
       child: Container(
         padding: EdgeInsets.all(5),
@@ -114,8 +125,6 @@ class _LiteSwitchState extends State<LiteSwitch>
                 child: Container(
                   padding: EdgeInsets.only(right: 10),
                   alignment: Alignment.centerRight,
-//                  width: widget.iWidth,
-//                  height: widget.iHeight,
                   child: Text(
                     widget.textOff,
                     style: TextStyle(
@@ -133,8 +142,6 @@ class _LiteSwitchState extends State<LiteSwitch>
                 child: Container(
                   padding: EdgeInsets.only(left: 5),
                   alignment: Alignment.centerLeft,
-//                  width: widget.iWidth,
-//                  height: widget.iHeight,
                   child: Text(
                     widget.textOn,
                     style: TextStyle(
@@ -149,8 +156,6 @@ class _LiteSwitchState extends State<LiteSwitch>
               offset: Offset(
                   (widget.iWidth / 2 - widget.iHeight / 2) * offsetvalue, 0),
               child: Container(
-//                width: widget.iWidth,
-//                height: widget.iHeight,
                 alignment: Alignment.center,
                 decoration:
                     BoxDecoration(shape: BoxShape.circle, color: Colors.white),
@@ -199,5 +204,3 @@ class _LiteSwitchState extends State<LiteSwitch>
     });
   }
 }
-
-// # example

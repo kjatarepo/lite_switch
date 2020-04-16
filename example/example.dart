@@ -9,6 +9,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _LiteSwitchState extends State<MyApp> {
+  final ValueNotifier<bool> SwitchState = new ValueNotifier<bool>(true);
   @override
   void initState() {
     super.initState();
@@ -23,26 +24,40 @@ class _LiteSwitchState extends State<MyApp> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(
-        child: new Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 0),
-              child: LiteSwitch(
-                initValue: true,
-                textSize: 16.0,
-                iWidth: 140,
-                iHeight: 40,
-                textOn: 'Sound ON',
-                textOff: 'Sound Off',
-                colorOn: Colors.deepOrange,
-                colorOff: Colors.black,
-                iconOn: Icons.volume_up,
-                iconOff: Icons.volume_off,
-                onChanged: (bool state) {
-                },
-              ),
+            LiteSwitch(
+              switchState: SwitchState,
+              initValue: true,
+              textSize: 14.0,
+              iWidth: 140,
+              iHeight: 60,
+              textOn: 'Sound ON',
+              textOff: 'Sound Off',
+              colorOn: Colors.deepOrange,
+              colorOff: Colors.black,
+              iconOn: Icons.volume_up,
+              iconOff: Icons.volume_off,
+              onChanged: (bool state) {
+                setState(() {
+                  SwitchState.value = !SwitchState.value;
+                  print('turned ${(state) ? 'on' : 'off'}');
+                });
+
+              },
             ),
+            RaisedButton(
+              onPressed: () {
+                setState(() {
+                  SwitchState.value = !SwitchState.value;
+                  print(
+                      'onPressed ${(SwitchState.value) ? 'on' : 'off'}');
+                });
+              },
+              child: Text("On/Off"),
+            ),
+            Text("State:${(SwitchState.value) ? 'on' : 'off'}"),
           ],
         ),
       ),

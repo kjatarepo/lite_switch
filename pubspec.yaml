@@ -1,7 +1,7 @@
 name: lite_switch
 description: Lite Switch is a customized switch which you can add text and icon for "On" and "Off". You can also set the width and height for the switch in your app.
-version: 1.0.5
-homepage: https://www.galacticpuffin.com
+version: 1.0.6
+homepage: https://github.com/galacticpuffin/lite_switch
 
 
 environment:
@@ -22,7 +22,9 @@ dev_dependencies:
 flutter:
 assets:
   - assets/images/on.png
-  - assets/images/off.png
+  - assets/images/off.pn
+  - assets/images/switchStateOff.png
+  - assets/images/switchStateOn.png
   # To add assets to your package, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
